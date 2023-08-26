@@ -8,15 +8,15 @@
 
 stack_t *create_stack(int n)
 {
-    stack_t *node;
+stack_t *node;
+node = malloc(sizeof(stack_t));
 
-    node = malloc(sizeof(stack_t));
-    if (node == NULL)
-        print_err(4);
-    node->next = NULL;
-    node->prev = NULL;
-    node->n = n;
-    return (node);
+if (node == NULL)
+print_err(4);
+node->next = NULL;
+node->prev = NULL;
+node->n = n;
+return (node);
 }
 
 /**
@@ -25,15 +25,15 @@ stack_t *create_stack(int n)
 
 void free_stack(void)
 {
-    stack_t *current;
+stack_t *current;
 
-    if (head == NULL)
-        return;
+if (head == NULL)
+return;
 
-    while (head != NULL)
-    {
-        current = head;
-        head = head->next;
-        free(current);
-    }
+while (head != NULL)
+{
+current = head;
+head = head->next;
+free(current);
+}
 }
