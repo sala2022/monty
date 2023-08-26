@@ -1,18 +1,18 @@
 #include "monty.h"
 
 /**
-* print_err1 - print errors
-* @error_number: print error depend on number
+* print_err - print errors
+* @error_num: print error depend on number
 */
 
-void print_err1(int error_number, ...)
+void print_err(int error_num, ...)
 {
 	va_list arg;
 	char *op;
-	int number;
+	int l_num;
 
-	va_start(arg, error_number);
-	switch (error_number)
+	va_start(arg, error_num);
+	switch (error_num)
 	{
 		case 1:
 			fprintf(stderr, "USAGE: monty file\n");
@@ -21,9 +21,9 @@ void print_err1(int error_number, ...)
 			fprintf(stderr, "Error: Can't open file %s\n", va_arg(arg, char *));
 			break;
 		case 3:
-			number = va_arg(arg, int);
+			l_num = va_arg(arg, int);
 			op = va_arg(arg, char *);
-			fprintf(stderr, "L%d: unknown instruction %s\n", number, op);
+			fprintf(stderr, "L%d: unknown instruction %s\n", l_num, op);
 			break;
 		case 4:
 			fprintf(stderr, "Error: malloc failed\n");
@@ -48,34 +48,34 @@ void print_err1(int error_number, ...)
 
 /**
 * print_err2 - print errors
-* @error_number: print error depend on number
+* @error_num: print error depend on number
 */
 
-void print_err2(int error_number, ...)
+void print_err2(int error_num, ...)
 {
 	va_list arg;
 	char *op;
-	int number;
+	int l_num;
 
-	va_start(arg, error_number);
-	switch (error_number)
+	va_start(arg, error_num);
+	switch (error_num)
 	{
 		case 8:
-			number = va_arg(arg, unsigned int);
+			l_num = va_arg(arg, unsigned int);
 			op = va_arg(arg, char *);
-			fprintf(stderr, "L%d: can't %s, stack too short\n", number, op);
+			fprintf(stderr, "L%d: can't %s, stack too short\n", l_num, op);
 			break;
 		case 9:
 			fprintf(stderr, "L%d: division by zero\n",
 					 va_arg(arg, unsigned int));
 			break;
 		case 10:
-			number = va_arg(arg, int);
-			fprintf(stderr, "L%d: can't pchar, value out of range\n", number);
+			l_num = va_arg(arg, int);
+			fprintf(stderr, "L%d: can't pchar, value out of range\n", l_num);
 			break;
 		case 11:
-			number = va_arg(arg, int);
-			fprintf(stderr, "L%d: can't pchar, stack empty\n", number);
+			l_num = va_arg(arg, int);
+			fprintf(stderr, "L%d: can't pchar, stack empty\n", l_num);
 			break;
 		default:
 			break;
