@@ -22,7 +22,7 @@ void swap_f(stack_t **stack, unsigned int line_n)
 	stack_t *current;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, line_n, "swap");
+		print_err2(8, line_n, "swap");
 	current = (*stack)->next;
 	(*stack)->next = current->next;
 	if (current->next != NULL)
@@ -43,7 +43,7 @@ void add_f(stack_t **stack, unsigned int line_n)
 	int sum;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, line_n, "add");
+		print_err2(8, line_n, "add");
 
 	(*stack) = (*stack)->next;
 	sum = (*stack)->n + (*stack)->prev->n;
@@ -64,7 +64,7 @@ void sub_f(stack_t **stack, unsigned int line_n)
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 
-		more_err(8, line_n, "sub");
+		print_err2(8, line_n, "sub");
 
 
 	(*stack) = (*stack)->next;
@@ -85,10 +85,10 @@ void div_f(stack_t **stack, unsigned int line_n)
 	int sum;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, line_n, "div");
+		print_err2(8, line_n, "div");
 
 	if ((*stack)->n == 0)
-		more_err(9, line_n);
+		print_err2(9, line_n);
 	(*stack) = (*stack)->next;
 	sum = (*stack)->n / (*stack)->prev->n;
 	(*stack)->n = sum;
