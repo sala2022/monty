@@ -33,19 +33,19 @@ void add_queue(stack_t **newstack, __attribute__((unused))unsigned int ln_num)
 {
 	stack_t *current;
 
-	if (stack == NULL || *stack == NULL)
+	if (newstack == NULL || *newstack == NULL)
 		exit(EXIT_FAILURE);
 	if (head == NULL)
 	{
-		head = *stack;
+		head = *newstack;
 		return;
 	}
-	tmp = head;
+	current = head;
 	while (current->next != NULL)
 		current = current->next;
 
-	current->next = *stack;
-	(*stack)->prev = current;
+	current->next = *newstack;
+	(*newstack)->prev = current;
 }
 
 /**
@@ -64,7 +64,7 @@ void print_stack(stack_t **stack, unsigned int line_number)
 	current = *stack;
 	while (current != NULL)
 	{
-		printf("%d\n", tmp->n);
+		printf("%d\n", current->n);
 		current = current->next;
 	}
 }
